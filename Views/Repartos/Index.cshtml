@@ -1,0 +1,45 @@
+@model IEnumerable<WebViajes.Models.Reparto>
+
+@{
+    ViewData["Title"] = "Reparto de gastos";
+}
+
+
+<h1>Reparto de gastos</h1>
+<a asp-action="Create" class="btn btn-success mb-3">Nuevo reparto</a>
+
+
+@if (!Model.Any())
+{
+    <p class="text-muted">Todavía no tienes ningún reparto. Crea el primero para empezar.</p>
+}
+else
+{
+    <table class="table table-hover align-middle">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Miembros</th>
+                <th>Gastos</th>
+                <th>Creado</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Nombre</td>
+                    <td>@item.Miembros.Count</td>
+                    <td>@item.Gastos.Count</td>
+                    <td>@item.FechaCreacion.ToString("dd/MM/yyyy")</td>
+                    <td class="text-end">
+                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-outline-primary">Abrir</a>
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-secondary">Renombrar</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-outline-danger">Borrar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

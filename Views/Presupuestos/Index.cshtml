@@ -1,0 +1,30 @@
+@model List<WebViajes.Models.Presupuesto>
+
+<h1>Mis presupuestos</h1>
+<a asp-action="Crear" class="btn btn-success mb-3">Nuevo presupuesto</a>
+
+<table class="table align-middle">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Total</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var p in Model)
+        {
+            <tr>
+                <td>@p.Nombre</td>
+                <td>@p.Total.ToString("N2") €</td>
+                <td class="text-end text-nowrap">
+                    <a asp-action="Editar" asp-route-id="@p.Id" class="btn btn-sm btn-outline-primary">Abrir</a>
+                    <form asp-action="Borrar" asp-route-id="@p.Id" method="post" class="d-inline"
+                          onsubmit="return confirm('¿Borrar «@p.Nombre»? Esta acción no se puede deshacer.');">
+                        <button type="submit" class="btn btn-sm btn-outline-danger">Borrar</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

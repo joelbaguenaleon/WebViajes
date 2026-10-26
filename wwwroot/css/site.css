@@ -1,0 +1,78 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus,
+.btn:active:focus,
+.btn-link.nav-link:focus,
+.form-control:focus,
+.form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.form-floating>.form-control-plaintext::placeholder,
+.form-floating>.form-control::placeholder {
+  color: var(--bs-secondary-color);
+  text-align: end;
+}
+
+.form-floating>.form-control-plaintext:focus::placeholder,
+.form-floating>.form-control:focus::placeholder {
+  text-align: start;
+}
+
+/*diseño de la parte de presupuesto*/
+/* Filas de desglose */
+.table tabla_presupuesto {
+  --bs-table-bg: #230b84;
+  /* azul claro, bien distinto del blanco */
+}
+
+.table tabla_presupuesto {
+  border-left: 4px solid #fdb50d;
+  /* barra lateral que las une al concepto padre */
+}
+
+/*formato img's pagina inicio*/
+.carrusel-img {
+  height: 380px;
+  object-fit: cover;
+}
+
+.carousel-caption {
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  bottom: 1.5rem;
+}
+
+#carruselFunciones {
+  border: 2px solid #0d6efd;
+  /* color del marco */
+  border-radius: 1rem;
+  padding: 0.75rem;
+  background-color: #f1f4f9;
+  /* gris azulado suave */
+  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.15);
+}
+
+#carruselFunciones .carousel-inner {
+  border-radius: 0.5rem;
+  box-shadow: none;
+}

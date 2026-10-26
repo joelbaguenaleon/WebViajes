@@ -1,0 +1,19 @@
+@model WebViajes.Models.Reparto
+
+@{
+    ViewData["Title"] = "Borrar reparto";
+}
+
+<h1>Borrar reparto</h1>
+
+<div class="alert alert-warning">
+    ¿Seguro que quieres borrar <strong>@Model.Nombre</strong>?
+    Se eliminarán también sus @Model.Miembros.Count miembros y sus @Model.Gastos.Count gastos.
+    Esta acción no se puede deshacer.
+</div>
+
+<form asp-action="Delete">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Sí, borrar</button>
+    <a asp-action="Index" class="btn btn-link">Cancelar</a>
+</form>

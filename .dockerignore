@@ -1,0 +1,29 @@
+# Compilación
+**/bin/
+**/obj/
+
+# Git y editor
+.git/
+.gitignore
+.vs/
+.vscode/
+*.user
+*.suo
+
+# Datos locales (no deben ir a la imagen)
+App_Data/
+*.db
+*.db-shm
+*.db-wal
+
+# Configuración local con posibles secretos
+**/appsettings.Development.json
+
+# Docker
+Dockerfile
+.dockerignore
+**/Dockerfile*
+
+# Otros
+*.md
+Estructura_Web.png

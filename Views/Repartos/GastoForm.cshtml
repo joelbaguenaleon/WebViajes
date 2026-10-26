@@ -1,0 +1,58 @@
+@model WebViajes.Models.GastoFormViewModel
+
+<form asp-action="@(Model.Id == 0 ? "Create" : "Edit")">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="Id" />
+    <input type="hidden" asp-for="RepartoId" />
+
+    <div class="mb-3">
+        <label asp-for="Concepto" class="form-label"></label>
+        <input asp-for="Concepto" class="form-control" placeholder="Ej: Cena del viernes" />
+        <span asp-validation-for="Concepto" class="text-danger"></span>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label asp-for="Importe" class="form-label"></label>
+            <div class="input-group">
+                <input asp-for="Importe" type="text" inputmode="decimal" class="form-control" />
+                <span class="input-group-text">€</span>
+            </div>
+            <span asp-validation-for="Importe" class="text-danger"></span>
+        </div>
+        <div class="col-md-6 mb-3">
+            <label asp-for="Fecha" class="form-label"></label>
+            <input asp-for="Fecha" class="form-control" />
+            <span asp-validation-for="Fecha" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="PagadoPorId" class="form-label"></label>
+        <select asp-for="PagadoPorId" class="form-select"
+                asp-items="@(new SelectList(Model.Miembros, "Id", "Nombre"))"></select>
+        <span asp-validation-for="PagadoPorId" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Participan en el gasto (a partes iguales)</label>
+        @foreach (var m in Model.Miembros)
+        {
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="ParticipantesIds" value="@m.Id" id="p_@m.Id"
+                @(Model.ParticipantesIds.Contains(m.Id) ? "checked" : "") />
+                <label class="form-check-label" for="p_@m.Id">@m.Nombre</label>
+            </div>
+        }
+        <span asp-validation-for="ParticipantesIds" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Notas" class="form-label"></label>
+        <textarea asp-for="Notas" class="form-control" rows="2"></textarea>
+        <span asp-validation-for="Notas" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Guardar</button>
+    <a asp-controller="Repartos" asp-action="Details" asp-route-id="@Model.RepartoId" class="btn btn-link">Cancelar</a>
+</form>
